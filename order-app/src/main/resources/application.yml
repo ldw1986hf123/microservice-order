@@ -1,0 +1,22 @@
+server:
+  port: 8002
+mybatis:
+  type-aliases-package: com.ldw.microservice.entity
+  mapper-locations: mybatis/mapper/**/*.xml
+spring:
+  application:
+    name: microservice-order
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    username: root
+    password:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.172.129:8848
+        namespace: dev  # 或者具体的 namespace ID
+
+# 日志配置文件
+logging:
+  config: classpath:logback-spring.xml
