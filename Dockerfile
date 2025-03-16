@@ -11,4 +11,4 @@ COPY uc-app/target/microservice-order.jar microservice-order.jar
 EXPOSE 8002
 
 # 启动命令
-ENTRYPOINT ["java", "-jar", "microservice-uc.jar"]
+ENTRYPOINT ["java", "-jar", "microservice-order.jar"]
