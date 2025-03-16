@@ -63,7 +63,7 @@
     </dependencies>
 
     <build>
-        <finalName>microservice-uc</finalName>
+        <finalName>microservice-order</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
