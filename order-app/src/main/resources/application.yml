@@ -15,8 +15,14 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.172.129:8848
+        prefer-ip-address: true  # 让 Feign 解析为 IP 地址
         namespace: dev  # 或者具体的 namespace ID
-
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
 # 日志配置文件
 logging:
   config: classpath:logback-spring.xml
