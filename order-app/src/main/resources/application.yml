@@ -8,14 +8,14 @@ spring:
     name: microservice-order
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cloudDB01
+    url: jdbc:mysql://localhost:3306/airlines
     username: root
     password:
   cloud:
     nacos:
       discovery:
         server-addr: 192.168.172.129:8848
-        prefer-ip-address: true  # 让 Feign 解析为 IP 地址
+        ip: 192.168.172.129
         namespace: dev  # 或者具体的 namespace ID
 feign:
   client:

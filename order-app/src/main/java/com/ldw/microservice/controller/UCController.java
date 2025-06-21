@@ -54,7 +54,7 @@ public class UCController {
     }
 
 
-    @GetMapping("/getOrder")
+ /*   @GetMapping("/getOrder")
     public Result getOrderRank(Long deptId) {
         Stopwatch stopwatch = Stopwatch.createStarted();
         log.info("statsCoRanking_start customBeginDate{}", beginDateStr);
@@ -89,6 +89,6 @@ public class UCController {
         });
         stopwatch.elapsed(TimeUnit.SECONDS);
         log.info("statsCoRanking_end {}", stopwatch);
-    }
+    }*/
 
 }
