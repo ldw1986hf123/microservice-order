@@ -45,49 +45,16 @@ public class TjzbRptSumServiceImpl implements TjzbRptSumService {
 
     private List<String> getSumData() {
         List<String> dataDatilList = new ArrayList<>();
+        List<DateTime> monthList = getAllMonth(1);
 
-        // 2. 定义线程池（核心线程5，最大10，队列200）
-        ExecutorService executor = new ThreadPoolExecutor(
-                5,
-                10,
-                60L, TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(200),
-                Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.CallerRunsPolicy()
-        );
+        for (DateTime month : monthList) {
+            int fromYear = month.year();
+            int fromMonth = month.month() + 1;
+            //遍历部门
+            for (int dept = 0; dept < 50; dept++) {
 
-        List<Future<String>> futures = new ArrayList<>();
-
-        try {
-            for (int i = 0; i < 50; i++) {
-                Future<String> future = executor.submit(() -> {
-                    // 调远程接口，返回 JSON
-                    return getDateFromRemote();
-                });
-                futures.add(future);
-            }
-            // 4. 等待任务完成并解析结果
-            for (Future<String> future : futures) {
-                try {
-                    String json = future.get(); // 阻塞等待返回
-                } catch (InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                    Thread.currentThread().interrupt(); // 恢复中断状态
-                }
-            }
-        } finally {
-            // 5. 关闭线程池
-            executor.shutdown();
-            try {
-                if (!executor.awaitTermination(30, TimeUnit.MINUTES)) {
-                    executor.shutdownNow();
-                }
-            } catch (InterruptedException e) {
-                executor.shutdownNow();
-                Thread.currentThread().interrupt();
             }
         }
-
         return dataDatilList;
     }
 
